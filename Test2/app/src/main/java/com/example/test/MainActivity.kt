@@ -2,14 +2,15 @@ package com.example.test
 
 import android.os.Bundle
 import android.util.Log
-import com.example.test.base.BaseActivity
-import com.example.test.view.author.LoginFragment
+import com.example.test.commons.base.BaseActivity
+import com.example.test.modules.MainFragment
+import com.example.test.modules.view.author.SignInFragment
 
 
 class MainActivity : BaseActivity() {
 
     override fun initComponent(saveInstantState: Bundle?) {
-        addFragment(LoginFragment(),R.id.container,"login",false)
+        addFragment(MainFragment(),R.id.container,"mainfragment",false)
     }
     override fun getLayout(): Int {
         return R.layout.activity_main
