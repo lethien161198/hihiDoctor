@@ -5,6 +5,7 @@ import android.util.Log
 import com.example.test.commons.base.BaseActivity
 import com.example.test.modules.MainFragment
 import com.example.test.modules.view.author.SignInFragment
+import com.example.test.modules.view.doctors.DrugFragment
 
 
 class MainActivity : BaseActivity() {
