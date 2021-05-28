@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.commons.utils.GlideImage
 import com.example.test.databinding.ItemDoctorBinding
-import com.example.test.databinding.ItemNewsBinding
 import com.example.test.model.Doctor
-import kotlinx.android.synthetic.main.item_doctor.view.*
 
 class DoctorAdapter(private var data: MutableList<Doctor>?,
                     private var context: Context?,
@@ -33,10 +31,12 @@ class DoctorAdapter(private var data: MutableList<Doctor>?,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind.avatar.setImageResource(R.drawable.avatar)
         holder.bind.nameDoctor.text = data!![position].name
-        holder.bind.description.text = data!![position].description
         holder.bind.itemDoctor.startAnimation(AnimationUtils.loadAnimation(context,R.anim.item_anim_from_right))
         holder.bind.itemDoctor.setOnClickListener{
             onClickItemDoctor.onClickItem("")
+        }
+        holder.bind.edit.setOnClickListener {
+            onClickItemDoctor.onClickEdit("")
         }
     }
 
@@ -48,5 +48,7 @@ class DoctorAdapter(private var data: MutableList<Doctor>?,
 
     interface OnClickItemDoctor{
         fun onClickItem(id:String)
+        fun onClickEdit(id:String)
+        fun onClickDelete(id:String)
     }
 }

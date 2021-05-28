@@ -11,7 +11,8 @@ import com.example.test.adapter.DoctorAdapter
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentDoctorsBinding
 import com.example.test.model.Doctor
-import com.example.test.modules.view.ProfileFragment
+import com.example.test.modules.view.profile.ProfileFragment
+import kotlinx.android.synthetic.main.header_title.view.*
 import kotlinx.android.synthetic.main.item_doctor.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -62,7 +63,7 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
 
     override fun initComponent(viewBinding: FragmentDoctorsBinding) {
         var list = mutableListOf<Doctor>()
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
+        list.add(Doctor(name = "Thien Le Duc" ))
         list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
         list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
         list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
@@ -76,9 +77,22 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
         val doctorAdapter = DoctorAdapter(list,context,this)
         viewBinding.doctorRecycler.adapter = doctorAdapter
         doctorAdapter.notifyDataSetChanged()
+
+        viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
+        viewBinding.header.title.text = "Doctor"
+        viewBinding.header.btnLeft.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     override fun onClickItem(id: String) {
         replaceFragment(ProfileFragment(),"profilefragment",true)
+    }
+
+    override fun onClickEdit(id: String) {
+        replaceFragment(UpdateDoctorFragment(),"updatedoctorfragment",true)
+    }
+
+    override fun onClickDelete(id: String) {
     }
 }

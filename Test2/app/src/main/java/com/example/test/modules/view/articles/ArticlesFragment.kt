@@ -1,4 +1,4 @@
-package com.example.test.modules.view
+package com.example.test.modules.view.articles
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

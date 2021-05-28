@@ -10,8 +10,9 @@ import com.example.test.adapter.BottomAdapter
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentMainBinding
 import com.example.test.modules.view.*
+import com.example.test.modules.view.articles.ArticlesFragment
 import com.example.test.modules.view.doctors.DoctorsFragment
-import com.example.test.modules.view.tutorial.QuestionFragment
+import com.example.test.modules.view.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -58,6 +59,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
                     return@setOnNavigationItemSelectedListener true
                 }
 
+                R.id.placeholder -> {
+
+                    return@setOnNavigationItemSelectedListener true
+                }
+
             }
             false
 
@@ -82,7 +88,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
         val bottomAdapter = BottomAdapter(context as FragmentActivity)
 
         bottomAdapter.addFragment(HomeFragment())   //0
-        bottomAdapter.addFragment(DoctorsFragment())   //1
+        bottomAdapter.addFragment(ArticlesFragment())   //1
         bottomAdapter.addFragment(ArticlesFragment())   //1
         viewPager2.adapter = bottomAdapter
         viewPager2.isUserInputEnabled = false
@@ -97,11 +103,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
             }
             R.id.nav_about -> {
                 viewPager2.setCurrentItem(1, false)
-                bottomvar.selectedItemId = R.id.placeholder1
+                bottomvar.selectedItemId = R.id.placeholder
             }
             R.id.nav_setting -> {
                 viewPager2.setCurrentItem(1, false)
-                bottomvar.selectedItemId = R.id.placeholder1
+                bottomvar.selectedItemId = R.id.placeholder
             }
 
         }

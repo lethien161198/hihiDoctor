@@ -1,10 +1,7 @@
-package com.example.test.modules.view
+package com.example.test.modules.view.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.test.R
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentProfileBinding
