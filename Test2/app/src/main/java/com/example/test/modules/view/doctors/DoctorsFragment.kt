@@ -4,13 +4,17 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.R
 import com.example.test.adapter.DoctorAdapter
 import com.example.test.commons.base.BaseFragment
+import com.example.test.components.CustomProgress
 import com.example.test.databinding.FragmentDoctorsBinding
 import com.example.test.model.Doctor
 import com.example.test.modules.view.profile.ProfileFragment
+import com.example.test.modules.viewmodel.DoctorsViewModel
+import com.example.test.modules.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.header_title.view.*
 import kotlinx.android.synthetic.main.item_doctor.*
 
@@ -62,21 +66,15 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
         get() = R.layout.fragment_doctors
 
     override fun initComponent(viewBinding: FragmentDoctorsBinding) {
-        var list = mutableListOf<Doctor>()
-        list.add(Doctor(name = "Thien Le Duc" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
-        list.add(Doctor(name = "Thien Le Duc", description = "PTIT" ))
+        CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.doctorRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-        val doctorAdapter = DoctorAdapter(list,context,this)
-        viewBinding.doctorRecycler.adapter = doctorAdapter
-        doctorAdapter.notifyDataSetChanged()
+        val viewModel: DoctorsViewModel = ViewModelProvider(this).get(DoctorsViewModel::class.java)
+        viewModel.createListDoctor()
+        viewModel.listDoctor.observe(this,{
+            val doctorAdapter = DoctorAdapter(it,context,this)
+            viewBinding.doctorRecycler.adapter = doctorAdapter
+            doctorAdapter.notifyDataSetChanged()
+        })
 
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
         viewBinding.header.title.text = "Doctor"

@@ -6,7 +6,7 @@ import com.github.ybq.android.spinkit.style.FadingCircle
 class CustomProgress {
     companion object{
         fun FadingCircle(progress:ProgressBar){
-            progress.setIndeterminateDrawable(FadingCircle())
+            progress.indeterminateDrawable = FadingCircle() 
         }
     }
 }

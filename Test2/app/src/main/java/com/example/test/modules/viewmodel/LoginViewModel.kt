@@ -1,15 +1,21 @@
 package com.example.test.modules.viewmodel
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.example.test.commons.base.BaseViewModel
 import com.example.test.commons.utils.Constants
 import com.example.test.commons.utils.SharedPreferenceHelper
+import com.example.test.model.BodyResponseDTO
+import com.example.test.model.JwtResponse
 import com.example.test.model.LoginRequest
 import com.example.test.modules.services.Api
 import com.example.test.modules.services.RetrofitClient
+import com.example.test.modules.services.SignInService
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
@@ -26,18 +32,33 @@ class LoginViewModel:BaseViewModel() {
 
         var request = LoginRequest(username = "leducthien@gmail.com",password = "1234567890")
 
-        RetrofitClient.createService(Api::class.java).SignIn(request)
-            .delay(2000,TimeUnit.MILLISECONDS)
+
+        SignInService.signIn(request)
+            .delay(2000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe{
-                message.value = it.message!!
-                if(message.value.equals("Login Success")){
-                    SharedPreferenceHelper.setString(Constants.PREF_EMAIL,request.username)
-                    SharedPreferenceHelper.setString(Constants.PREF_PASSWORD,request.password)
-                    SharedPreferenceHelper.setString(Constants.PREF_TOKEN,it.token)
+            .subscribe(object : Observer<BodyResponseDTO<JwtResponse>> {
+                override fun onSubscribe(d: Disposable) {
+                    //compositeDisposable.add(d)
                 }
-                busy.value = 8
-            }
+
+                override fun onNext(it: BodyResponseDTO<JwtResponse>) {
+                    message.value = it.message!!
+                    if (message.value.equals("Login Success")) {
+                        SharedPreferenceHelper.setString(Constants.PREF_EMAIL, request.username)
+                        SharedPreferenceHelper.setString(Constants.PREF_PASSWORD, request.password)
+                        SharedPreferenceHelper.setString(Constants.PREF_TOKEN, it.token)
+                    }
+                               }
+
+                override fun onError(e: Throwable) {
+                    Log.d("1234", "onError: ${e.message}")
+                }
+
+                override fun onComplete() {
+                    busy.value = 8
+                }
+
+            })
     }
 }
