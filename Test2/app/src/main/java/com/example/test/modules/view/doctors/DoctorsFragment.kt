@@ -1,10 +1,9 @@
 package com.example.test.modules.view.doctors
 
+import android.content.DialogInterface
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.R
 import com.example.test.adapter.DoctorAdapter
@@ -14,6 +13,7 @@ import com.example.test.model.Doctor
 import com.example.test.modules.view.profile.ProfileFragment
 import kotlinx.android.synthetic.main.header_title.view.*
 import kotlinx.android.synthetic.main.item_doctor.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,5 +94,17 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
     }
 
     override fun onClickDelete(id: String) {
+        val builder = context?.let { AlertDialog.Builder(it) }
+        builder?.setTitle("Delete Doctor")
+        builder?.setMessage("Do you delete this doctor ?")
+
+        builder?.setPositiveButton("Yes") { dialog, which ->
+            showMessage("yes")
+        }
+
+        builder?.setNegativeButton("No") { dialog, which ->
+           showMessage("no")
+        }
+        builder?.show()
     }
 }

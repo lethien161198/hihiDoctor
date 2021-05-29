@@ -22,7 +22,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:src="@drawable/doctor"
+                    android:src="@drawable/background"
                     android:scaleType="fitXY"
                     />
 
@@ -31,13 +31,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/img1"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/avatar"
+                        android:src="@drawable/drug"
                         android:padding="2dp"
-                        android:background="@drawable/circle"
                         app:layout_constraintTop_toTopOf="@id/img2"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/img2"/>
@@ -45,19 +44,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/name1"
-                        android:text="Thuoc"
+                        android:text="@string/medicine"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         app:layout_constraintTop_toBottomOf="@+id/img1"
                         app:layout_constraintLeft_toLeftOf="@+id/img1"
                         app:layout_constraintRight_toRightOf="@id/img1"/>
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/img2"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/avatar"
+                        android:src="@drawable/clinic"
                         android:padding="2dp"
-                        android:background="@drawable/circle"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"/>
@@ -65,19 +63,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/name2"
-                        android:text="Phong kham"
+                        android:text="@string/clinic"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         app:layout_constraintTop_toBottomOf="@+id/img2"
                         app:layout_constraintLeft_toLeftOf="@+id/img2"
                         app:layout_constraintRight_toRightOf="@id/img2"/>
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/img3"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/avatar"
+                        android:src="@drawable/patient"
                         android:padding="2dp"
-                        android:background="@drawable/circle"
                         app:layout_constraintTop_toTopOf="@id/img2"
                         app:layout_constraintLeft_toRightOf="@id/img2"
                         app:layout_constraintRight_toRightOf="parent"/>
@@ -85,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/name3"
-                        android:text="Benh Nhan"
+                        android:text="@string/patient"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         app:layout_constraintTop_toBottomOf="@+id/img3"
@@ -99,13 +96,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/img4"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/avatar"
+                        android:src="@drawable/doctorbackground"
                         android:padding="2dp"
-                        android:background="@drawable/circle"
                         app:layout_constraintTop_toTopOf="@id/img5"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@id/img5"/>
@@ -113,19 +109,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/name4"
-                        android:text="Bac Si"
+                        android:text="@string/doctor"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         app:layout_constraintTop_toBottomOf="@+id/img4"
                         app:layout_constraintLeft_toLeftOf="@+id/img4"
                         app:layout_constraintRight_toRightOf="@id/img4"/>
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/img5"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/avatar"
+                        android:src="@drawable/news"
                         android:padding="2dp"
-                        android:background="@drawable/circle"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"/>
@@ -133,19 +128,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/name5"
-                        android:text="Tin tuc"
+                        android:text="@string/news"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         app:layout_constraintTop_toBottomOf="@+id/img5"
                         app:layout_constraintLeft_toLeftOf="@+id/img5"
                         app:layout_constraintRight_toRightOf="@id/img5"/>
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/img6"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/avatar"
                         android:padding="2dp"
-                        android:background="@drawable/circle"
                         app:layout_constraintTop_toTopOf="@id/img5"
                         app:layout_constraintLeft_toRightOf="@id/img5"
                         app:layout_constraintRight_toRightOf="parent"/>
@@ -153,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/name6"
-                        android:text="Up to date"
+                        android:text="@string/up_to_date"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         app:layout_constraintTop_toBottomOf="@+id/img6"
@@ -180,7 +174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/seeAll"
-                        android:text="See All"
+                        android:text="@string/see_all"
                         android:textSize="20sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

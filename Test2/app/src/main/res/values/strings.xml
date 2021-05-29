@@ -10,4 +10,11 @@
     <string name="None">None</string>
     <string name="about">About Us</string>
     <string name="member">Member</string>
+    <string name="medicine">Medicine</string>
+    <string name="clinic">Clinic</string>
+    <string name="patient">Patient</string>
+    <string name="doctor">Doctor</string>
+    <string name="up_to_date">Up-to-date</string>
+    <string name="news">News</string>
+    <string name="see_all">See All</string>
 </resources>

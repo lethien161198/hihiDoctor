@@ -31,12 +31,16 @@ class DoctorAdapter(private var data: MutableList<Doctor>?,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind.avatar.setImageResource(R.drawable.avatar)
         holder.bind.nameDoctor.text = data!![position].name
-        holder.bind.itemDoctor.startAnimation(AnimationUtils.loadAnimation(context,R.anim.item_anim_from_right))
+        holder.bind.cardview.startAnimation(AnimationUtils.loadAnimation(context,R.anim.item_anim_from_right))
         holder.bind.itemDoctor.setOnClickListener{
             onClickItemDoctor.onClickItem("")
         }
         holder.bind.edit.setOnClickListener {
             onClickItemDoctor.onClickEdit("")
+        }
+
+        holder.bind.delete.setOnClickListener {
+            onClickItemDoctor.onClickDelete("")
         }
     }
 
