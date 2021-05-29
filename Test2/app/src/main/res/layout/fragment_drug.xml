@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data/>
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/white_smoke"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".modules.view.drugs.DrugFragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/drug_recycler_view"
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_title" />
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/drug_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 </layout>

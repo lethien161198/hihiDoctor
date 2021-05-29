@@ -1,4 +1,4 @@
-package com.example.test.modules.view.clinic
+package com.example.test.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

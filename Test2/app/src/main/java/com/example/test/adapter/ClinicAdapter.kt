@@ -1,4 +1,4 @@
-package com.example.test.modules.view.clinic
+package com.example.test.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.databinding.ClinicItemBinding
+import com.example.test.model.Clinic
 
 class ClinicAdapter(private var listClinic: MutableList<Clinic>) :
     RecyclerView.Adapter<ClinicAdapter.ClinicViewHolder>() {
