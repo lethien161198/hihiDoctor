@@ -1,6 +1,5 @@
 package com.example.test.modules.view.doctors
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -11,12 +10,9 @@ import com.example.test.adapter.DoctorAdapter
 import com.example.test.commons.base.BaseFragment
 import com.example.test.components.CustomProgress
 import com.example.test.databinding.FragmentDoctorsBinding
-import com.example.test.model.Doctor
+import com.example.test.modules.view.doctors.updatedoctor.UpdateDoctorFragment
 import com.example.test.modules.view.profile.ProfileFragment
-import com.example.test.modules.viewmodel.DoctorsViewModel
-import com.example.test.modules.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.header_title.view.*
-import kotlinx.android.synthetic.main.item_doctor.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -66,18 +62,18 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
         get() = R.layout.fragment_doctors
 
     override fun initComponent(viewBinding: FragmentDoctorsBinding) {
-        CustomProgress.FadingCircle(viewBinding.progress)
+        //CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.doctorRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         val viewModel: DoctorsViewModel = ViewModelProvider(this).get(DoctorsViewModel::class.java)
         viewModel.createListDoctor()
         viewModel.listDoctor.observe(this,{
-            val doctorAdapter = DoctorAdapter(it,context,this)
+            val doctorAdapter = DoctorAdapter(it,requireContext(),this)
             viewBinding.doctorRecycler.adapter = doctorAdapter
             doctorAdapter.notifyDataSetChanged()
         })
 
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
-        viewBinding.header.title.text = "Doctor"
+        viewBinding.header.title.text = R.string.doctor.toString()
         viewBinding.header.btnLeft.setOnClickListener {
             activity?.onBackPressed()
         }

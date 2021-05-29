@@ -1,4 +1,4 @@
-package com.example.test.modules.view.doctors
+package com.example.test.modules.view.doctors.updatedoctor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

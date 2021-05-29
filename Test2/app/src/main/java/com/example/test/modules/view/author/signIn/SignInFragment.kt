@@ -1,7 +1,6 @@
-package com.example.test.modules.view.author
+package com.example.test.modules.view.author.signIn
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -11,7 +10,7 @@ import com.example.test.R
 import com.example.test.commons.base.BaseFragment
 import com.example.test.components.CustomProgress
 import com.example.test.databinding.FragmentLoginBinding
-import com.example.test.modules.viewmodel.LoginViewModel
+import com.example.test.modules.view.author.signUp.SignUpFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,7 +60,7 @@ class SignInFragment : BaseFragment<FragmentLoginBinding>() {
         get() = R.layout.fragment_login
 
     override fun initComponent(viewBinding: FragmentLoginBinding) {
-        val viewModel:LoginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        val viewModel: LoginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         viewBinding.loginViewModel = viewModel
         CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.edtUser.setText("")
@@ -77,7 +76,7 @@ class SignInFragment : BaseFragment<FragmentLoginBinding>() {
         viewModel.message.observe(this,{
             Toast.makeText(context,it,Toast.LENGTH_LONG).show()
             if(it.equals("Login Success")){
-                replaceFragment(MainFragment(),"main",true)
+               // replaceFragment(MainFragment(),"main",true)
             }
         })
     }

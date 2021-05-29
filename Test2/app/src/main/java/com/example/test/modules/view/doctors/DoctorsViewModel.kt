@@ -1,4 +1,4 @@
-package com.example.test.modules.viewmodel
+package com.example.test.modules.view.doctors
 
 import androidx.lifecycle.MutableLiveData
 import com.example.test.commons.base.BaseViewModel
@@ -16,7 +16,6 @@ class DoctorsViewModel:BaseViewModel() {
 
     fun createListDoctor(){
         busy.value = 0
-
         DoctorsService.getAllDoctor()
             .delay(2000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -28,10 +27,11 @@ class DoctorsViewModel:BaseViewModel() {
 
                 override fun onNext(t: MutableList<Doctor>) {
                     listDoctor.value = t
+
                 }
 
                 override fun onError(e: Throwable) {
-
+                    busy.value = 8
                 }
 
                 override fun onComplete() {

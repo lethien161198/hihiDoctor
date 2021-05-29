@@ -1,4 +1,4 @@
-package com.example.test.modules.view.doctors
+package com.example.test.modules.view.drugs
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

@@ -1,13 +1,11 @@
 package com.example.test.modules.view.home
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.R
 import com.example.test.adapter.NewsAdapter
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentHomeBinding
 import com.example.test.modules.view.doctors.DoctorsFragment
-import com.example.test.modules.view.doctors.DrugFragment
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.example.test.modules.view.drugs.DrugFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 

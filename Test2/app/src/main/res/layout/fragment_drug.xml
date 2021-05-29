@@ -7,7 +7,7 @@
         android:background="@color/white_smoke"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".modules.view.doctors.DrugFragment">
+        tools:context=".modules.view.drugs.DrugFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/drug_recycler_view"

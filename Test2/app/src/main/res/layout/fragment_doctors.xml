@@ -3,7 +3,7 @@
     <data>
         <variable
             name="doctorsViewModel"
-            type="com.example.test.modules.viewmodel.DoctorsViewModel" />
+            type="com.example.test.modules.view.doctors.DoctorsViewModel" />
     </data>
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"

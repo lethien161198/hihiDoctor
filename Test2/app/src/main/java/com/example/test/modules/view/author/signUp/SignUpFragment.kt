@@ -1,10 +1,11 @@
-package com.example.test.modules.view.author
+package com.example.test.modules.view.author.signUp
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.test.R
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentRegisterBinding
+import com.example.test.modules.view.author.signIn.SignInFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

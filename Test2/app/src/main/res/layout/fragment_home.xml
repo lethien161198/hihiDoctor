@@ -25,6 +25,10 @@
                     android:src="@drawable/background"
                     android:scaleType="fitXY"
                     />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dark_late_gray" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:padding="10dp"
@@ -138,7 +142,7 @@
                         android:id="@+id/img6"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/avatar"
+                        android:src="@drawable/update"
                         android:padding="2dp"
                         app:layout_constraintTop_toTopOf="@id/img5"
                         app:layout_constraintLeft_toRightOf="@id/img5"

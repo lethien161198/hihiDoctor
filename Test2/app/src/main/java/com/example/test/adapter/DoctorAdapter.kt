@@ -10,8 +10,8 @@ import com.example.test.commons.utils.GlideImage
 import com.example.test.databinding.ItemDoctorBinding
 import com.example.test.model.Doctor
 
-class DoctorAdapter(private var data: MutableList<Doctor>?,
-                    private var context: Context?,
+class DoctorAdapter(private var data: MutableList<Doctor>,
+                    private var context: Context,
                     private val onClickItemDoctor: OnClickItemDoctor) :
     RecyclerView.Adapter<DoctorAdapter.ViewHolder>() {
     class ViewHolder(binding: ItemDoctorBinding) : RecyclerView.ViewHolder(binding.root) {
