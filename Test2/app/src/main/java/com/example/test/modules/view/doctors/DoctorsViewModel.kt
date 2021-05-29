@@ -10,24 +10,24 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class DoctorsViewModel:BaseViewModel() {
+class DoctorsViewModel : BaseViewModel() {
     var busy = MutableLiveData<Int>(8)
     var listDoctor = MutableLiveData<MutableList<Doctor>>()
 
-    fun createListDoctor(){
+    fun createListDoctor() {
         busy.value = 0
         DoctorsService.getAllDoctor()
             .delay(2000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(object: Observer<MutableList<Doctor>>{
+            .subscribe(object : Observer<MutableList<Doctor>> {
                 override fun onSubscribe(d: Disposable) {
 
                 }
 
                 override fun onNext(t: MutableList<Doctor>) {
                     listDoctor.value = t
-
+                    busy.value = 8
                 }
 
                 override fun onError(e: Throwable) {
@@ -39,7 +39,6 @@ class DoctorsViewModel:BaseViewModel() {
                 }
 
             })
-
 
 
     }

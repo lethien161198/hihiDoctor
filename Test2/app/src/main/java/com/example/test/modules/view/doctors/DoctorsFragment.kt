@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.R
 import com.example.test.adapter.DoctorAdapter
 import com.example.test.commons.base.BaseFragment
+import com.example.test.components.CustomProgress
 import com.example.test.databinding.FragmentDoctorsBinding
 import kotlinx.android.synthetic.main.header_title.view.*
 
@@ -22,7 +23,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [DoctorsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.OnClickItemDoctor{
+class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>(), DoctorAdapter.OnClickItemDoctor {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -59,12 +60,14 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
         get() = R.layout.fragment_doctors
 
     override fun initComponent(viewBinding: FragmentDoctorsBinding) {
-        //CustomProgress.FadingCircle(viewBinding.progress)
-        viewBinding.doctorRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        CustomProgress.FadingCircle(viewBinding.progress)
+        viewBinding.doctorRecycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val viewModel: DoctorsViewModel = ViewModelProvider(this).get(DoctorsViewModel::class.java)
+        viewBinding.doctorsViewModel = viewModel
         viewModel.createListDoctor()
-        viewModel.listDoctor.observe(this,{
-            val doctorAdapter = DoctorAdapter(it,requireContext(),this)
+        viewModel.listDoctor.observe(this, {
+            val doctorAdapter = DoctorAdapter(it, requireContext(), this)
             viewBinding.doctorRecycler.adapter = doctorAdapter
             doctorAdapter.notifyDataSetChanged()
         })
@@ -92,7 +95,7 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
         }
 
         builder?.setNegativeButton("No") { dialog, which ->
-           showMessage("no")
+            showMessage("no")
         }
         builder?.show()
     }
