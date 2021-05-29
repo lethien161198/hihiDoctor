@@ -4,6 +4,7 @@ import com.example.test.R
 import com.example.test.adapter.NewsAdapter
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentHomeBinding
+import com.example.test.modules.view.clinic.ClinicFragment
 import com.example.test.modules.view.doctors.DoctorsFragment
 import com.example.test.modules.view.drugs.DrugFragment
 
@@ -28,6 +29,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewBinding.img1.setOnClickListener {
             replaceFragment(DrugFragment(), "drugfragment", true)
+        }
+
+        viewBinding.img2.setOnClickListener {
+            replaceFragment(ClinicFragment(), "clinicfragment", true)
         }
     }
 
