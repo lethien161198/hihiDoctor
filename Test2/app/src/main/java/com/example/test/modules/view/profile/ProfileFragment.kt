@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.example.test.R
 import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentProfileBinding
+import com.example.test.modules.view.profile.updateProfile.UpdateProfileFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,6 +58,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override fun initComponent(viewBinding: FragmentProfileBinding) {
         viewBinding.btnBack.setOnClickListener {
             activity?.onBackPressed()
+        }
+        viewBinding.editProfile.setOnClickListener {
+            replaceFragment(UpdateProfileFragment(),"updateprofilefragment",true)
         }
     }
 }

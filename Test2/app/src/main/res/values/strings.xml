@@ -17,4 +17,6 @@
     <string name="up_to_date">Up-to-date</string>
     <string name="news">News</string>
     <string name="see_all">See All</string>
+    <string name="logout">Log Out</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -66,17 +66,16 @@ class SignInFragment : BaseFragment<FragmentLoginBinding>() {
         viewBinding.edtUser.setText("")
         viewBinding.edtPass.setText("")
         viewBinding.navigateToSignUp.setOnClickListener {
-            replaceFragment(SignUpFragment(),"signUp",true)
+            replaceFragment(SignUpFragment(),"signUpfragment",true)
         }
         viewBinding.progress.visibility = View.GONE
         viewBinding.btnSignIn.setOnClickListener {
-            //replaceFragment(MainFragment(),"main",true)
             viewModel.onClickLogin()
         }
         viewModel.message.observe(this,{
             Toast.makeText(context,it,Toast.LENGTH_LONG).show()
             if(it.equals("Login Success")){
-               // replaceFragment(MainFragment(),"main",true)
+                replaceFragment(MainFragment(),"mainfragment",false)
             }
         })
     }

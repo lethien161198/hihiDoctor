@@ -40,13 +40,14 @@ class LoginViewModel : BaseViewModel() {
                 }
 
                 override fun onNext(it: BodyResponseDTO<JwtResponse>) {
-                    message.value = it.message!!
-                    if (message.value.equals("Login Success")) {
-                        SharedPreferenceHelper.setString(Constants.PREF_EMAIL, request.username)
-                        SharedPreferenceHelper.setString(Constants.PREF_PASSWORD, request.password)
-                        SharedPreferenceHelper.setString(Constants.PREF_TOKEN, it.token)
-                    }
-
+//                    message.value = it.message!!
+//
+//                    if (message.value.equals("Login Success")) {
+//                        SharedPreferenceHelper.setString(Constants.PREF_EMAIL, request.username)
+//                        SharedPreferenceHelper.setString(Constants.PREF_PASSWORD, request.password)
+//                        SharedPreferenceHelper.setString(Constants.PREF_TOKEN, it.token)
+//                    }
+                    message.value = "Login Success"
                 }
 
                 override fun onError(e: Throwable) {

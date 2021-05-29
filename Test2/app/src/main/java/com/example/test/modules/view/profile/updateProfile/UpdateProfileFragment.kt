@@ -1,13 +1,10 @@
-package com.example.test.modules.view.doctors.updatedoctor
+package com.example.test.modules.view.profile.updateProfile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.test.R
 import com.example.test.commons.base.BaseFragment
-import com.example.test.databinding.FragmentUpdateDoctorBinding
+import com.example.test.databinding.FragmentUpdateProfileBinding
 import kotlinx.android.synthetic.main.header_title.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UpdateDoctorFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UpdateDoctorFragment : BaseFragment<FragmentUpdateDoctorBinding>() {
+class UpdateProfileFragment : BaseFragment<FragmentUpdateProfileBinding>() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -46,7 +43,7 @@ class UpdateDoctorFragment : BaseFragment<FragmentUpdateDoctorBinding>() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            UpdateDoctorFragment().apply {
+            UpdateProfileFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -55,9 +52,9 @@ class UpdateDoctorFragment : BaseFragment<FragmentUpdateDoctorBinding>() {
     }
 
     override val layoutRes: Int
-        get() = R.layout.fragment_update_doctor
+        get() = R.layout.fragment_update_profile
 
-    override fun initComponent(viewBinding: FragmentUpdateDoctorBinding) {
+    override fun initComponent(viewBinding: FragmentUpdateProfileBinding) {
         viewBinding.header.title.text = "Update Doctor"
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
         viewBinding.header.btnLeft.setOnClickListener {

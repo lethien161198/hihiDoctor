@@ -6,6 +6,12 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="@string/home" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person"
+            android:checkable="false"
+            android:title="@string/profile" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_about"
@@ -14,6 +20,11 @@
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_setting"
             android:title="@string/setting" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_login_24"
+            android:checkable="false"
+            android:title="@string/logout" />
         <item
             android:id="@+id/placeholder"
             android:title=""

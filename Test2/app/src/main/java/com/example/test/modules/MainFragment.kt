@@ -1,6 +1,7 @@
 package com.example.test.modules
 
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentActivity
@@ -11,8 +12,10 @@ import com.example.test.commons.base.BaseFragment
 import com.example.test.databinding.FragmentMainBinding
 import com.example.test.modules.view.*
 import com.example.test.modules.view.articles.ArticlesFragment
+import com.example.test.modules.view.author.signIn.SignInFragment
 import com.example.test.modules.view.doctors.DoctorsFragment
 import com.example.test.modules.view.home.HomeFragment
+import com.example.test.modules.view.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -68,9 +71,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
             false
 
         }
-        navigationView = viewBinding.navView
-        navigationView.setNavigationItemSelectedListener(this)
-        navigationView.setCheckedItem(R.id.nav_home)
+
 
         viewBinding.header.title.text = "Hihi Doctor"
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_menu)
@@ -79,6 +80,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
         }
 
         setViewPager()
+
+        navigationView = viewBinding.navView
+        navigationView.setNavigationItemSelectedListener(this)
+        if(viewPager2.currentItem == 0){
+            navigationView.setCheckedItem(R.id.nav_home)
+        }
     }
 
     override val layoutRes: Int
@@ -95,6 +102,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
 
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> {
@@ -108,6 +119,26 @@ class MainFragment : BaseFragment<FragmentMainBinding>(),
             R.id.nav_setting -> {
                 viewPager2.setCurrentItem(1, false)
                 bottomvar.selectedItemId = R.id.placeholder
+            }
+            R.id.nav_logout -> {
+                val builder = context?.let { AlertDialog.Builder(it) }
+                builder?.setTitle("Log Out")
+                builder?.setMessage("Are you sure ?")
+
+                builder?.setPositiveButton("Yes") { dialog, which ->
+                    showMessage("LogOut")
+                    replaceFragment(SignInFragment(),"",false)
+                }
+
+                builder?.setNegativeButton("No") { dialog, which ->
+                    showMessage("no")
+                }
+                builder?.show()
+                bottomvar.selectedItemId = R.id.miHome
+            }
+            R.id.nav_profile -> {
+                bottomvar.selectedItemId = R.id.miHome
+                replaceFragment(ProfileFragment(),"profilefragment",true)
             }
 
         }

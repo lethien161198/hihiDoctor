@@ -10,7 +10,7 @@ import com.example.test.modules.view.author.signIn.SignInFragment
 class MainActivity : BaseActivity() {
 
     override fun initComponent(saveInstantState: Bundle?) {
-        addFragment(MainFragment(),R.id.container,"mainfragment",false)
+        addFragment(SignInFragment(),R.id.container,"loginfragment",false)
     }
     override fun getLayout(): Int {
         return R.layout.activity_main

@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.R
 import com.example.test.adapter.DoctorAdapter
 import com.example.test.commons.base.BaseFragment
-import com.example.test.components.CustomProgress
 import com.example.test.databinding.FragmentDoctorsBinding
-import com.example.test.modules.view.doctors.updatedoctor.UpdateDoctorFragment
-import com.example.test.modules.view.profile.ProfileFragment
 import kotlinx.android.synthetic.main.header_title.view.*
 
 
@@ -73,18 +70,16 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>() , DoctorAdapter.O
         })
 
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
-        viewBinding.header.title.text = R.string.doctor.toString()
+        viewBinding.header.title.text = context?.resources?.getString(R.string.doctor)
         viewBinding.header.btnLeft.setOnClickListener {
             activity?.onBackPressed()
         }
     }
 
     override fun onClickItem(id: String) {
-        replaceFragment(ProfileFragment(),"profilefragment",true)
     }
 
     override fun onClickEdit(id: String) {
-        replaceFragment(UpdateDoctorFragment(),"updatedoctorfragment",true)
     }
 
     override fun onClickDelete(id: String) {
