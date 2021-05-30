@@ -3,10 +3,10 @@ package com.example.test.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Doctor(
-    @SerializedName("email")
+data class Patient(
+    @SerializedName("id")
     @Expose
-    var email: String = "",
+    var id: String = "",
     @SerializedName("name")
     @Expose
     var name: String = "",
@@ -19,16 +19,13 @@ data class Doctor(
     @SerializedName("age")
     @Expose
     var age: Int = 0,
-    @SerializedName("facebook_link")
-    @Expose
-    var facebook: String = "",
-    @SerializedName("zalo_link")
-    @Expose
-    var zalo: String = "",
     @SerializedName("description")
     @Expose
     var description: String = "",
-    @SerializedName("imageUrl")
+    @SerializedName("image_Url")
     @Expose
-    var imageUrl: String = ""
+    var imageUrl: String = "",
+    @SerializedName("diachi")
+    @Expose
+    var diachi: String = ""
 )

@@ -1,5 +1,6 @@
 package com.example.test.modules.view.profile.updateProfile
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.test.R
@@ -59,6 +60,17 @@ class UpdateProfileFragment : BaseFragment<FragmentUpdateProfileBinding>() {
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
         viewBinding.header.btnLeft.setOnClickListener {
             activity?.onBackPressed()
+        }
+        viewBinding.editName.setOnClickListener {
+            if(!viewBinding.tvName.isEnabled){
+                viewBinding.tvName.isEnabled = true
+            }
+            viewBinding.tvName.requestFocus()
+            viewBinding.tvName.setText("")
+        }
+        viewBinding.head.setOnClickListener {
+            viewBinding.tvName.clearFocus()
+            view?.let { it1 -> context?.hideKeyboard(it1) }
         }
     }
 }

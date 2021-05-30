@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/namePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Le Duc Thien"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintLeft_toRightOf="@+id/txtNamePatient"
+                app:layout_constraintTop_toTopOf="@id/txtNamePatient" />
+
+            <TextView
+                android:id="@+id/txtNamePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Name :"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/agePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintLeft_toRightOf="@+id/txtAgePatient"
+                app:layout_constraintTop_toTopOf="@id/txtAgePatient" />
+
+            <TextView
+                android:id="@+id/txtAgePatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age :"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="@id/txtNamePatient"
+                app:layout_constraintTop_toBottomOf="@id/namePatient" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/diagnostic"-->
+<!--                android:layout_width="180dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="đau mạn sườn phải"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:ellipsize="end"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                app:layout_constraintLeft_toRightOf="@+id/txtDiagnostic"-->
+<!--                app:layout_constraintTop_toTopOf="@id/txtDiagnostic" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtDiagnostic"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Diagnostic :"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintLeft_toLeftOf="@id/txtAgePatient"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/agePatient" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/date"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="30/4/2021"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                app:layout_constraintLeft_toRightOf="@+id/txtDate"-->
+<!--                app:layout_constraintTop_toTopOf="@id/txtDate" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtDate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Date :"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintLeft_toLeftOf="@id/txtDiagnostic"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/diagnostic" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/clinic"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="PHÒNG KHÁM ĐA KHOA TÂM ĐỨC-->
+<!--"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                app:layout_constraintLeft_toRightOf="@+id/txtClinic"-->
+<!--                app:layout_constraintTop_toTopOf="@id/txtClinic" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtClinic"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Clinic :"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintLeft_toLeftOf="@id/txtDate"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/date" />-->
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintRight_toLeftOf="@id/delete"
+                app:layout_constraintTop_toTopOf="@id/delete" />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_delete_outline_24"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtNamePatient" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
