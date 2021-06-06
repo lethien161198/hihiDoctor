@@ -1,4 +1,4 @@
-package com.example.test.model
+package com.example.test.model.responseDTO
 
 import com.google.gson.annotations.Expose
 
@@ -17,9 +17,9 @@ data class BodyResponseDTO<T> (
     @Expose
     var token: String? = null,
 
-    @SerializedName("totalResults")
+    @SerializedName("isSuccess")
     @Expose
-    var totalResults: Int? = null
+    var isSuccess: Boolean? = false
 
 
 )

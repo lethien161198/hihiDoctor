@@ -1,10 +1,7 @@
 package com.example.test.modules.services
 
 import com.example.test.model.Doctor
-import com.example.test.model.LoginRequest
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class DoctorsService {
     companion object{

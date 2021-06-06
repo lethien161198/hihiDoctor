@@ -1,10 +1,14 @@
 package com.example.test.modules.view.author.signUp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.test.R
 import com.example.test.commons.base.BaseFragment
+import com.example.test.components.CustomProgress
 import com.example.test.databinding.FragmentRegisterBinding
+
 import com.example.test.modules.view.author.signIn.SignInFragment
 
 // TODO: Rename parameter arguments, choose names that match
@@ -55,8 +59,19 @@ class SignUpFragment : BaseFragment<FragmentRegisterBinding>() {
         get() = R.layout.fragment_register
 
     override fun initComponent(viewBinding: FragmentRegisterBinding) {
+        val viewModel: RegisterViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        viewBinding.registerViewModel = viewModel
+        CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.navigateToSignIn.setOnClickListener {
             replaceFragment(SignInFragment(),"signIn",true)
         }
+        viewModel.message.observe(this,{
+            Toast.makeText(context,it, Toast.LENGTH_LONG).show()
+        })
+        viewModel.isSuccess.observe(this,{
+            if(it){
+                replaceFragment(SignInFragment(),"signinfragment",false)
+            }
+        })
     }
 }

@@ -1,7 +1,6 @@
-package com.example.test.model
+package com.example.test.model.responseDTO
 
 
-import com.example.test.model.SubscriptionPlan
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName

@@ -41,7 +41,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/gradStart"
+                        android:backgroundTint="#00000000"
                         android:enabled="false"
                         android:fontFamily="sans-serif-light"
                         android:text="Le Duc Thien"
@@ -115,7 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="thien@gmail.com"
+                            android:text="012345678"
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
@@ -142,7 +142,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="thien@gmail.com"
+                            android:text="Male"
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
@@ -169,7 +169,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="thien@gmail.com"
+                            android:text="22"
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
@@ -250,7 +250,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="thien@gmail.com"
+                            android:text="Bac si ...."
                             android:textColor="#000000"
                             android:textSize="18sp" />
 

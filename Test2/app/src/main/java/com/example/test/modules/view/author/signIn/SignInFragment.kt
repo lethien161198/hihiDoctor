@@ -69,14 +69,20 @@ class SignInFragment : BaseFragment<FragmentLoginBinding>() {
             replaceFragment(SignUpFragment(),"signUpfragment",true)
         }
         viewBinding.progress.visibility = View.GONE
-        viewBinding.btnSignIn.setOnClickListener {
-            viewModel.onClickLogin()
-        }
+//        viewBinding.btnSignIn.setOnClickListener {
+//            viewModel.onClickLogin()
+//        }
         viewModel.message.observe(this,{
             Toast.makeText(context,it,Toast.LENGTH_LONG).show()
             if(it.equals("Login Success")){
                 replaceFragment(MainFragment(),"mainfragment",false)
             }
         })
+
+        viewBinding.head.setOnClickListener {
+            viewBinding.edtPass.clearFocus()
+            viewBinding.edtUser.clearFocus()
+            view?.let { it1 -> context?.hideKeyboard(it1) }
+        }
     }
 }

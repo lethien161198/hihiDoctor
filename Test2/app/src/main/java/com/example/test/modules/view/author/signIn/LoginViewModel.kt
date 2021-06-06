@@ -4,11 +4,9 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.test.commons.base.BaseViewModel
-import com.example.test.commons.utils.Constants
-import com.example.test.commons.utils.SharedPreferenceHelper
-import com.example.test.model.BodyResponseDTO
-import com.example.test.model.JwtResponse
-import com.example.test.model.LoginRequest
+import com.example.test.model.responseDTO.BodyResponseDTO
+import com.example.test.model.responseDTO.JwtResponse
+import com.example.test.model.requestDTO.LoginRequest
 import com.example.test.modules.services.SignInService
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -29,7 +27,7 @@ class LoginViewModel : BaseViewModel() {
 
         var request = LoginRequest(username = "leducthien@gmail.com", password = "1234567890")
 
-
+        Log.d("1234", "onClickLogin: ${username.value}")
         SignInService.signIn(request)
             .delay(2000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
