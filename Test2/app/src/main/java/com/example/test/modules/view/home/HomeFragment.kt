@@ -8,6 +8,7 @@ import com.example.test.modules.view.clinic.ClinicFragment
 import com.example.test.modules.view.doctors.DoctorsFragment
 import com.example.test.modules.view.drugs.DrugFragment
 import com.example.test.modules.view.patients.allpatients.PatientsFragment
+import com.example.test.modules.view.prescription.PrescriptionFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
@@ -50,6 +51,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewBinding.img3.setOnClickListener {
             replaceFragment(PatientsFragment(), "patientfragmetn", true)
+        }
+
+        viewBinding.img5.setOnClickListener {
+            replaceFragment(PrescriptionFragment(), "prescriptionfragmetn", true)
         }
     }
 
