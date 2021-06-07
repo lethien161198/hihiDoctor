@@ -17,7 +17,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ProfileFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
+class ProfileFragment :
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(ProfileViewModel::class.java) {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -29,7 +30,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
 
 
     companion object {
@@ -60,7 +60,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             activity?.onBackPressed()
         }
         viewBinding.editProfile.setOnClickListener {
-            replaceFragment(UpdateProfileFragment(),"updateprofilefragment",true)
+            replaceFragment(UpdateProfileFragment(), "updateprofilefragment", true)
         }
     }
 }

@@ -6,7 +6,8 @@ import com.example.test.databinding.FragmentPrescriptionBinding
 import com.example.test.databinding.PrescriptionItemBinding
 import com.example.test.model.PrescriptionLayout
 
-class PrescriptionFragment : BaseFragment<FragmentPrescriptionBinding>() {
+class PrescriptionFragment :
+    BaseFragment<FragmentPrescriptionBinding, PrescriptionViewModel>(PrescriptionViewModel::class.java) {
     private val listLayout = mutableListOf<PrescriptionLayout>()
     override val layoutRes: Int
         get() = R.layout.fragment_prescription
@@ -21,13 +22,19 @@ class PrescriptionFragment : BaseFragment<FragmentPrescriptionBinding>() {
 
     private fun createLayout(viewBinding: FragmentPrescriptionBinding) {
         val layoutBinding: PrescriptionItemBinding = PrescriptionItemBinding.inflate(layoutInflater)
-        val layout = PrescriptionLayout(layoutBinding.drugRankTextView, layoutBinding.nameEditText, layoutBinding.numberEditText, layoutBinding.typeEditText, layoutBinding.useEditText)
+        val layout = PrescriptionLayout(
+            layoutBinding.drugRankTextView,
+            layoutBinding.nameEditText,
+            layoutBinding.numberEditText,
+            layoutBinding.typeEditText,
+            layoutBinding.useEditText
+        )
         listLayout.add(layout)
         layoutBinding.deleteImageView.setOnClickListener {
             viewBinding.containerLinearLayout.removeView(layoutBinding.root)
             listLayout.remove(layout)
             for (i in 0 until listLayout.size) {
-                listLayout[i].drugRank.text = "Thuoc ${i+1}"
+                listLayout[i].drugRank.text = "Thuoc ${i + 1}"
             }
         }
         layoutBinding.drugRankTextView.text = "Thuoc ${listLayout.size}"

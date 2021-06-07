@@ -22,7 +22,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.header_title.view.*
 
-class MainFragment : BaseFragment<FragmentMainBinding>(),
+class MainFragment : BaseFragment<FragmentMainBinding,MainViewModel>(MainViewModel::class.java),
     NavigationView.OnNavigationItemSelectedListener {
     private lateinit var drawer: DrawerLayout
     private lateinit var viewPager2: ViewPager2

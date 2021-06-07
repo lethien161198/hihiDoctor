@@ -23,7 +23,9 @@ private const val ARG_PARAM2 = "param2"
  * Use the [DoctorsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>(), DoctorAdapter.OnClickItemDoctor {
+class DoctorsFragment :
+    BaseFragment<FragmentDoctorsBinding, DoctorsViewModel>(DoctorsViewModel::class.java),
+    DoctorAdapter.OnClickItemDoctor {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -63,10 +65,10 @@ class DoctorsFragment : BaseFragment<FragmentDoctorsBinding>(), DoctorAdapter.On
         CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.doctorRecycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        val viewModel: DoctorsViewModel = ViewModelProvider(this).get(DoctorsViewModel::class.java)
-        viewBinding.doctorsViewModel = viewModel
-        viewModel.createListDoctor()
-        viewModel.listDoctor.observe(this, {
+        //val viewModel: DoctorsViewModel = ViewModelProvider(this).get(DoctorsViewModel::class.java)
+        viewBinding.doctorsViewModel = getViewModel()
+        getViewModel().createListDoctor()
+        getViewModel().listDoctor.observe(this, {
             val doctorAdapter = DoctorAdapter(it, requireContext(), this)
             viewBinding.doctorRecycler.adapter = doctorAdapter
             doctorAdapter.notifyDataSetChanged()

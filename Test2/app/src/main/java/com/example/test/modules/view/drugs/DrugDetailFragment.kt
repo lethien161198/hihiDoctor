@@ -6,7 +6,8 @@ import com.example.test.databinding.FragmentDrugDetailBinding
 import com.example.test.model.Drug
 import kotlinx.android.synthetic.main.header_title.view.*
 
-class DrugDetailFragment(val drug: Drug) : BaseFragment<FragmentDrugDetailBinding>() {
+class DrugDetailFragment(val drug: Drug) :
+    BaseFragment<FragmentDrugDetailBinding, DrugDetailViewModel>(DrugDetailViewModel::class.java) {
     override val layoutRes: Int
         get() = R.layout.fragment_drug_detail
 

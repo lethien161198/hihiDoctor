@@ -12,15 +12,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.example.test.R
 
 
-abstract class BaseFragment<ViewBinding : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<ViewBinding : ViewDataBinding, ViewModel : BaseViewModel>(private val vmClass: Class<ViewModel>) :
+    Fragment() {
     abstract val layoutRes: Int
-
+    private lateinit var viewModel: ViewModel
     private lateinit var viewBinding: ViewBinding
 
     abstract fun initComponent(viewBinding: ViewBinding)
+
+    internal fun getViewModel():ViewModel{
+        return viewModel
+    }
 
     internal fun replaceFragment(
         fragment: Fragment,
@@ -37,13 +43,13 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding> : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+        viewModel = ViewModelProvider(this).get(vmClass)
         return viewBinding.root
     }
 
@@ -70,7 +76,8 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding> : Fragment() {
     open fun onBackPress() {}
 
     internal fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 

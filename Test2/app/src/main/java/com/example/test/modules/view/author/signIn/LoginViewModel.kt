@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.test.commons.base.BaseViewModel
+import com.example.test.commons.utils.Constants
+import com.example.test.commons.utils.SharedPreferenceHelper
 import com.example.test.model.responseDTO.BodyResponseDTO
 import com.example.test.model.responseDTO.JwtResponse
 import com.example.test.model.requestDTO.LoginRequest
@@ -19,15 +21,13 @@ class LoginViewModel : BaseViewModel() {
     var password = MutableLiveData<String>()
     var message = MutableLiveData<String>()
     var busy = MutableLiveData<Int>(8)
-
+    var isSuccess = MutableLiveData(false)
     @SuppressLint("CheckResult")
     fun onClickLogin() {
         busy.value = 0
-        //var request = LoginRequest(username = username.value,password = password.value)
+        var request = LoginRequest(username = username.value,password = password.value)
 
-        var request = LoginRequest(username = "leducthien@gmail.com", password = "1234567890")
-
-        Log.d("1234", "onClickLogin: ${username.value}")
+        //var request = LoginRequest(username = "leducthien@gmail.com", password = "1234567890")
         SignInService.signIn(request)
             .delay(2000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -38,14 +38,13 @@ class LoginViewModel : BaseViewModel() {
                 }
 
                 override fun onNext(it: BodyResponseDTO<JwtResponse>) {
-//                    message.value = it.message!!
-//
-//                    if (message.value.equals("Login Success")) {
-//                        SharedPreferenceHelper.setString(Constants.PREF_EMAIL, request.username)
-//                        SharedPreferenceHelper.setString(Constants.PREF_PASSWORD, request.password)
-//                        SharedPreferenceHelper.setString(Constants.PREF_TOKEN, it.token)
-//                    }
-                    message.value = "Login Success"
+                    message.value = it.message!!
+
+                    if (it.isSuccess == true) {
+                        SharedPreferenceHelper.setString(Constants.PREF_EMAIL, request.username)
+                        SharedPreferenceHelper.setString(Constants.PREF_PASSWORD, request.password)
+                        SharedPreferenceHelper.setString(Constants.PREF_TOKEN, it.token)
+                    }
                 }
 
                 override fun onError(e: Throwable) {

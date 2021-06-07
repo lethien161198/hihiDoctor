@@ -22,7 +22,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SignInFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SignInFragment : BaseFragment<FragmentLoginBinding>() {
+class SignInFragment :
+    BaseFragment<FragmentLoginBinding, LoginViewModel>(LoginViewModel::class.java) {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -60,22 +61,22 @@ class SignInFragment : BaseFragment<FragmentLoginBinding>() {
         get() = R.layout.fragment_login
 
     override fun initComponent(viewBinding: FragmentLoginBinding) {
-        val viewModel: LoginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        viewBinding.loginViewModel = viewModel
+        //val viewModel: LoginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewBinding.loginViewModel = getViewModel()
         CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.edtUser.setText("")
         viewBinding.edtPass.setText("")
         viewBinding.navigateToSignUp.setOnClickListener {
-            replaceFragment(SignUpFragment(),"signUpfragment",true)
+            replaceFragment(SignUpFragment(), "signUpfragment", true)
         }
         viewBinding.progress.visibility = View.GONE
 //        viewBinding.btnSignIn.setOnClickListener {
 //            viewModel.onClickLogin()
 //        }
-        viewModel.message.observe(this,{
-            Toast.makeText(context,it,Toast.LENGTH_LONG).show()
-            if(it.equals("Login Success")){
-                replaceFragment(MainFragment(),"mainfragment",false)
+        getViewModel().message.observe(this, {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            if (it.equals("Login Success")) {
+                replaceFragment(MainFragment(), "mainfragment", false)
             }
         })
 

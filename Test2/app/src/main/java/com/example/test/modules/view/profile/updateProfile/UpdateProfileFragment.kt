@@ -18,7 +18,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UpdateDoctorFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UpdateProfileFragment : BaseFragment<FragmentUpdateProfileBinding>() {
+class UpdateProfileFragment :
+    BaseFragment<FragmentUpdateProfileBinding, UpdateProfileViewModel>(UpdateProfileViewModel::class.java) {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -62,7 +63,7 @@ class UpdateProfileFragment : BaseFragment<FragmentUpdateProfileBinding>() {
             activity?.onBackPressed()
         }
         viewBinding.editName.setOnClickListener {
-            if(!viewBinding.tvName.isEnabled){
+            if (!viewBinding.tvName.isEnabled) {
                 viewBinding.tvName.isEnabled = true
             }
             viewBinding.tvName.requestFocus()

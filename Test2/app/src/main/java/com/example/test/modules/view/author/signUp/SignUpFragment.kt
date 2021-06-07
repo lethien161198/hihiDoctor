@@ -21,7 +21,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SignUpFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SignUpFragment : BaseFragment<FragmentRegisterBinding>() {
+class SignUpFragment :
+    BaseFragment<FragmentRegisterBinding, RegisterViewModel>(RegisterViewModel::class.java) {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -59,18 +60,19 @@ class SignUpFragment : BaseFragment<FragmentRegisterBinding>() {
         get() = R.layout.fragment_register
 
     override fun initComponent(viewBinding: FragmentRegisterBinding) {
-        val viewModel: RegisterViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
-        viewBinding.registerViewModel = viewModel
+//        val viewModel: RegisterViewModel =
+//            ViewModelProvider(this).get(RegisterViewModel::class.java)
+        viewBinding.registerViewModel = getViewModel()
         CustomProgress.FadingCircle(viewBinding.progress)
         viewBinding.navigateToSignIn.setOnClickListener {
-            replaceFragment(SignInFragment(),"signIn",true)
+            replaceFragment(SignInFragment(), "signIn", true)
         }
-        viewModel.message.observe(this,{
-            Toast.makeText(context,it, Toast.LENGTH_LONG).show()
+        getViewModel().message.observe(this, {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         })
-        viewModel.isSuccess.observe(this,{
-            if(it){
-                replaceFragment(SignInFragment(),"signinfragment",false)
+        getViewModel().isSuccess.observe(this, {
+            if (it) {
+                replaceFragment(SignInFragment(), "signinfragment", false)
             }
         })
     }

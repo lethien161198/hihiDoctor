@@ -12,7 +12,9 @@ import com.example.test.model.Clinic
 import kotlinx.android.synthetic.main.header_title.view.*
 import java.util.*
 
-class ClinicFragment : BaseFragment<FragmentClinicBinding>(), ClinicAdapter.ClinicClickListener {
+class ClinicFragment :
+    BaseFragment<FragmentClinicBinding, ClinicViewModel>(ClinicViewModel::class.java),
+    ClinicAdapter.ClinicClickListener {
     override val layoutRes: Int
         get() = R.layout.fragment_clinic
 
@@ -25,11 +27,51 @@ class ClinicFragment : BaseFragment<FragmentClinicBinding>(), ClinicAdapter.Clin
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)
 
         val listClinic: MutableList<Clinic> = mutableListOf()
-        listClinic.add(Clinic("1", "Benh vien Bach Mai", "Giai Phong", "Nam se tao desciption sau", "Nam tao image sau"))
-        listClinic.add(Clinic("2", "Benh vien Quan Y", "Phung Hung", "Nam se tao desciption sau", "Nam tao image sau"))
-        listClinic.add(Clinic("3", "Benh vien Da Khoa Ninh Binh", "Ninh Binh", "Nam se tao desciption sau", "Nam tao image sau"))
-        listClinic.add(Clinic("4", "Benh vien Rang Ham Mat Trung Uong", "gan Ho Guom", "Nam se tao desciption sau", "Nam tao image sau"))
-        listClinic.add(Clinic("5", "Benh vien Viet Duc", "gan Ho Guom", "Nam se tao desciption sau", "Nam tao image sau"))
+        listClinic.add(
+            Clinic(
+                "1",
+                "Benh vien Bach Mai",
+                "Giai Phong",
+                "Nam se tao desciption sau",
+                "Nam tao image sau"
+            )
+        )
+        listClinic.add(
+            Clinic(
+                "2",
+                "Benh vien Quan Y",
+                "Phung Hung",
+                "Nam se tao desciption sau",
+                "Nam tao image sau"
+            )
+        )
+        listClinic.add(
+            Clinic(
+                "3",
+                "Benh vien Da Khoa Ninh Binh",
+                "Ninh Binh",
+                "Nam se tao desciption sau",
+                "Nam tao image sau"
+            )
+        )
+        listClinic.add(
+            Clinic(
+                "4",
+                "Benh vien Rang Ham Mat Trung Uong",
+                "gan Ho Guom",
+                "Nam se tao desciption sau",
+                "Nam tao image sau"
+            )
+        )
+        listClinic.add(
+            Clinic(
+                "5",
+                "Benh vien Viet Duc",
+                "gan Ho Guom",
+                "Nam se tao desciption sau",
+                "Nam tao image sau"
+            )
+        )
         val recycler: RecyclerView = viewBinding.clinicRecyclerView
         val clinicAdapter = ClinicAdapter(listClinic)
         clinicAdapter.mListener = this

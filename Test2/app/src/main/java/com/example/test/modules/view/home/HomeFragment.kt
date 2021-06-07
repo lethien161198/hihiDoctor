@@ -10,7 +10,7 @@ import com.example.test.modules.view.drugs.DrugFragment
 import com.example.test.modules.view.patients.allpatients.PatientsFragment
 import com.example.test.modules.view.prescription.PrescriptionFragment
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(HomeViewModel::class.java) {
 
     override fun initComponent(viewBinding: FragmentHomeBinding) {
         val list = mutableListOf<String>()

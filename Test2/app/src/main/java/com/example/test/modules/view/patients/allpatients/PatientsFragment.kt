@@ -27,7 +27,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [PatientsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PatientsFragment : BaseFragment<FragmentPatientsBinding>(),
+class PatientsFragment :
+    BaseFragment<FragmentPatientsBinding, PatientsViewModel>(PatientsViewModel::class.java),
     PatientAdapter.OnClickItemPatient {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

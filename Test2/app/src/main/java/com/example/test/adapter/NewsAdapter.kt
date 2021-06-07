@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.commons.utils.GlideImage
-import com.example.test.databinding.ItemQuestionBinding
 import com.example.test.databinding.ItemViewPagerBinding
 import com.example.test.model.Question
 
