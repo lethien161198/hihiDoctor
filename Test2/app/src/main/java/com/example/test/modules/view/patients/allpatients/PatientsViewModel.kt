@@ -2,8 +2,12 @@ package com.example.test.modules.view.patients.allpatients
 
 import androidx.lifecycle.MutableLiveData
 import com.example.test.commons.base.BaseViewModel
+import com.example.test.commons.utils.Constants
+import com.example.test.commons.utils.SharedPreferenceHelper
 import com.example.test.model.Doctor
 import com.example.test.model.Patient
+import com.example.test.model.requestDTO.TokenRequest
+import com.example.test.model.responseDTO.BodyResponseDTO
 import com.example.test.modules.services.DoctorsService
 import com.example.test.modules.services.PatientsService
 import io.reactivex.Observer
@@ -18,17 +22,21 @@ class PatientsViewModel : BaseViewModel() {
 
     fun createListPatient() {
         busy.value = 0
-        PatientsService.getAllPatient()
+        var username = SharedPreferenceHelper.getString(Constants.PREF_EMAIL)
+        var password = SharedPreferenceHelper.getString(Constants.PREF_PASSWORD)
+        var token = SharedPreferenceHelper.getString(Constants.PREF_TOKEN)
+        var tokenRequest = TokenRequest(password,username,token)
+        PatientsService.getAllPatient(tokenRequest)
             .delay(2000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(object : Observer<MutableList<Patient>> {
+            .subscribe(object : Observer<BodyResponseDTO<MutableList<Patient>>> {
                 override fun onSubscribe(d: Disposable) {
 
                 }
 
-                override fun onNext(t: MutableList<Patient>) {
-                    listPatient.value = t
+                override fun onNext(t: BodyResponseDTO<MutableList<Patient>>) {
+                    listPatient.value = t.data!!
                     busy.value = 8
                 }
 

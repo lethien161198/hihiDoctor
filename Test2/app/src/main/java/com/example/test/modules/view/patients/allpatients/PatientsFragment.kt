@@ -78,6 +78,9 @@ class PatientsFragment :
             val patientAdapter = PatientAdapter(it, requireContext(), this)
             viewBinding.listPatientRecycler.adapter = patientAdapter
             patientAdapter.notifyDataSetChanged()
+            if(patientAdapter.itemCount == 0){
+                showMessage("No patient.")
+            }
         })
 
         viewBinding.header.btnLeft.setImageResource(R.drawable.ic_baseline_arrow_back_ios_new_24)

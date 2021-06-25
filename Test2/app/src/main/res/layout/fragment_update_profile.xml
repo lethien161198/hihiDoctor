@@ -42,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#00000000"
-                        android:enabled="false"
+                        android:enabled="true"
                         android:fontFamily="sans-serif-light"
                         android:text="Le Duc Thien"
                         android:textColor="@color/white_smoke"
@@ -112,6 +112,7 @@
                             android:textSize="13sp" />
 
                         <EditText
+                            android:id="@+id/phone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
@@ -139,6 +140,7 @@
                             android:textSize="13sp" />
 
                         <EditText
+                            android:id="@+id/sex"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
@@ -166,6 +168,7 @@
                             android:textSize="13sp" />
 
                         <EditText
+                            android:id="@+id/age"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
@@ -188,11 +191,41 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="Address"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="13sp" />
+
+                        <EditText
+                            android:id="@+id/address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:text="Benh vien Bach Mai"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/dark_late_gray" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Facebook"
                             android:textColor="@color/colorPrimary"
                             android:textSize="13sp" />
 
                         <EditText
+                            android:id="@+id/fb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
@@ -220,6 +253,7 @@
                             android:textSize="13sp" />
 
                         <EditText
+                            android:id="@+id/zalo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
@@ -247,6 +281,7 @@
                             android:textSize="13sp" />
 
                         <EditText
+                            android:id="@+id/description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"

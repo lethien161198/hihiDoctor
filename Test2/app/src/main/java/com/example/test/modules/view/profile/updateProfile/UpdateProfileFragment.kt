@@ -5,8 +5,22 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.test.R
 import com.example.test.commons.base.BaseFragment
+import com.example.test.commons.utils.Constants
+import com.example.test.commons.utils.SharedPreferenceHelper
 import com.example.test.databinding.FragmentUpdateProfileBinding
+import com.example.test.model.Patient
+import com.example.test.model.requestDTO.UpdateDoctorRequest
+import com.example.test.model.responseDTO.BodyResponseDTO
+import com.example.test.model.responseDTO.Data
+import com.example.test.modules.services.Api
+import com.example.test.modules.services.RetrofitClient
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_update_profile.*
 import kotlinx.android.synthetic.main.header_title.view.*
+import java.util.concurrent.TimeUnit
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,5 +87,44 @@ class UpdateProfileFragment :
             viewBinding.tvName.clearFocus()
             view?.let { it1 -> context?.hideKeyboard(it1) }
         }
+        var username = SharedPreferenceHelper.getString(Constants.PREF_EMAIL)
+        var password = SharedPreferenceHelper.getString(Constants.PREF_PASSWORD)
+        var token = SharedPreferenceHelper.getString(Constants.PREF_TOKEN)
+
+        var updateDoctor = UpdateDoctorRequest(password,username, token,
+            viewBinding.tvName.text.toString(),
+            viewBinding.phone.text.toString(),
+            viewBinding.sex.text.toString(),
+            Integer.parseInt(viewBinding.age.text.toString()),
+            viewBinding.fb.text.toString(),
+            viewBinding.zalo.text.toString(),
+            viewBinding.description.text.toString(),
+            "",
+            viewBinding.address.text.toString())
+        viewBinding.updateDoctor.setOnClickListener {
+            RetrofitClient.createService(Api::class.java).updateDoctor(updateDoctor)
+                .delay(2000, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(object : Observer<BodyResponseDTO<Data>> {
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onNext(t: BodyResponseDTO<Data>) {
+                        t.message?.let { showMessage(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        e.message?.let { showMessage(it) }
+                    }
+
+                    override fun onComplete() {
+
+                    }
+
+                })
+        }
+
     }
 }

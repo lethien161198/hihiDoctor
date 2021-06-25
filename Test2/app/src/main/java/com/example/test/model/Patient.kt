@@ -25,7 +25,7 @@ data class Patient(
     @SerializedName("image_Url")
     @Expose
     var imageUrl: String = "",
-    @SerializedName("diachi")
+    @SerializedName("dia_chi")
     @Expose
     var diachi: String = ""
 )
